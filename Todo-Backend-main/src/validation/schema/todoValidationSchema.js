@@ -1,0 +1,23 @@
+import * as yup from 'yup';
+
+export const postSchema = yup.object({
+  title: yup
+    .string()
+    .trim()
+    .min(3, 'Title must be at least 3 characters long')
+    .required('Title is required'),
+  isCompleted: yup.boolean().default(false),
+  tags: yup.array().optional(),
+  isImportant: yup.boolean().default(false),
+});
+
+export const updateSchema = yup.object({
+  title: yup
+    .string()
+    .trim()
+    .min(3, 'Title must be at least 3 characters long')
+    .optional(),
+  isCompleted: yup.boolean().optional(),
+  tags: yup.array().optional(),
+  isImportant: yup.boolean().optional(),
+});
